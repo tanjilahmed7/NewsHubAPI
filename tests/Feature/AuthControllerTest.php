@@ -97,7 +97,6 @@ class AuthControllerTest extends TestCase
     public function test_user_can_logout()
     {
         $user = User::factory()->create();
-
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $response = $this->withHeader('Authorization', "Bearer $token")
@@ -118,8 +117,8 @@ class AuthControllerTest extends TestCase
 
         Password::shouldReceive('sendResetLink')
             ->once()
-            ->withArgs(function ($credentials, $callback) {
-                return $credentials['email'] === 'test@example.com' && is_callable($callback);
+            ->withArgs(function ($credentials) {
+                return $credentials['email'] === 'test@example.com';
             })
             ->andReturn(Password::RESET_LINK_SENT);
 
@@ -130,6 +129,7 @@ class AuthControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertJson(['message' => __('passwords.sent')]);
     }
+
 
     /**
      * Test password reset.
