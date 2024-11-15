@@ -15,6 +15,12 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
+    /**
+     * Register a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function register(Request $request)
     {
         $data = $request->validate([
@@ -28,6 +34,12 @@ class AuthController extends Controller
         return response()->json($result, 201);
     }
 
+    /**
+     * Logs in a user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function login(Request $request)
     {
         $data = $request->validate([
@@ -40,6 +52,12 @@ class AuthController extends Controller
         return response()->json($result, 200);
     }
 
+    /**
+     * Logout the user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function logout(Request $request)
     {
         $this->authService->logout($request->user());
@@ -47,6 +65,12 @@ class AuthController extends Controller
         return response()->json(['message' => 'Logged out successfully'], 200);
     }
 
+    /**
+     * Sends a password reset link to the user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function sendPasswordResetLink(Request $request)
     {
         $request->validate(['email' => 'required|email']);
@@ -56,6 +80,12 @@ class AuthController extends Controller
         return response()->json(['message' => $message], 200);
     }
 
+    /**
+     * Reset the user's password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function resetPassword(Request $request)
     {
         $data = $request->validate([

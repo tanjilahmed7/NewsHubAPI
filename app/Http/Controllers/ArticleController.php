@@ -9,23 +9,40 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
+    /**
+     * Retrieve all articles.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $articles = Article::paginate(10);
         return response()->json($articles);
     }
 
+    /**
+     * Display the specified article.
+     *
+     * @param  Article  $article
+     * @return \Illuminate\Http\Response
+     */
     public function show(Article $article)
     {
         return response()->json($article);
     }
 
+    /**
+     * Handle a filtered request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function filtered(Request $request)
     {
-        $keyword = $request->input('keyword');
-        $source = $request->input('source');
-        $from = $request->input('from');
-        $to = $request->input('to');
+        $keyword    = $request->input('keyword');
+        $source     = $request->input('source');
+        $from       = $request->input('from');
+        $to         = $request->input('to');
 
 
         $articles = Article::query()
@@ -39,6 +56,11 @@ class ArticleController extends Controller
 
 
 
+    /**
+     * Retrieve personalized news for the user.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function personalizedNews()
     {
         $user = auth()->user();
