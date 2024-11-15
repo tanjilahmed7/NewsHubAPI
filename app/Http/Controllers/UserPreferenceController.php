@@ -10,12 +10,12 @@ class UserPreferenceController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'sources'       => 'nullable|array',              // Ensures 'sources' is an array
-            'sources.*'     => 'string|max:255',            // Each item in the 'sources' array must be a string
-            'categories'    => 'nullable|array',           // Ensures 'categories' is an array
+            'sources'       => 'nullable|array',         // Ensures 'sources' is an array
+            'sources.*'     => 'string|max:255',         // Each item in the 'sources' array must be a string
+            'categories'    => 'nullable|array',         // Ensures 'categories' is an array
             'categories.*'  => 'string|max:255',         // Each item in the 'categories' array must be a string
-            'authors'       => 'nullable|array',              // Ensures 'authors' is an array
-            'authors.*'     => 'string|max:255',            // Each item in the 'authors' array must be a string
+            'authors'       => 'nullable|array',         // Ensures 'authors' is an array
+            'authors.*'     => 'string|max:255',         // Each item in the 'authors' array must be a string
         ]);
 
 

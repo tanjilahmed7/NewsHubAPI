@@ -6,10 +6,13 @@ use App\Models\User;
 use App\Models\UserPreference;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Support\Facades\DB;
 
 class UserPreferenceControllerTest extends TestCase
 {
     use RefreshDatabase;
+
+
 
     /**
      * Test setting user preferences.
