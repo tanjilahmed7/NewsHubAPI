@@ -13,7 +13,7 @@
 Clone this repository to your local machine:
 
 ````bash
-git clone https://github.com/yourusername/NewsHubAPI.git
+git clone https://github.com/tanjilahmed7/NewsHubAPI/
 cd NewsHubAPI
 
 ### Build the Docker Containers
