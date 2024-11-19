@@ -53,3 +53,7 @@ To fetch news data using the custom Artisan command, run the following:
 ```bash
 php artisan news:fetch
 ````
+
+### 2. API Documentation
+
+https://tanjilahmed.com/newshubapi/
