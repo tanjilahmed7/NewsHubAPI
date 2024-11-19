@@ -10,6 +10,11 @@ class Article extends Model
 {
     use HasFactory;
 
+    /**
+     * The Article model represents an article in the NewsHubAPI application.
+     *
+     * @var array $fillable The attributes that are mass assignable.
+     */
     protected $fillable = [
         'source_id',
         'source_name',
@@ -23,6 +28,13 @@ class Article extends Model
 
     ];
 
+    /**
+     * Scope a query to search for articles by keyword.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $keyword
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeSearchByKeyword($query, $keyword)
     {
         if ($keyword) {
@@ -35,6 +47,13 @@ class Article extends Model
     }
 
 
+    /**
+     * Scope a query to filter articles by source.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $source
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeFilterBySource($query, $source)
     {
         if ($source) {
@@ -43,6 +62,14 @@ class Article extends Model
         return $query;
     }
 
+    /**
+     * Filter the query by a date range.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $from
+     * @param  string  $to
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeFilterByDateRange($query, $from, $to)
     {
         if ($from) {
