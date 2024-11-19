@@ -7,6 +7,12 @@ use App\Models\UserPreference;
 
 class UserPreferenceController extends Controller
 {
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -24,6 +30,11 @@ class UserPreferenceController extends Controller
         return response()->json($preference);
     }
 
+    /**
+     * Show the user preferences.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function show()
     {
         $preference = UserPreference::where('user_id', auth()->id())->first();
